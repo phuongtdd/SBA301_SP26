@@ -1,0 +1,21 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; 
+}
+
+.main-content {
+  flex: 1; 
+}
+
+footer {
+  /* Tùy chỉnh footer của bạn */
+  background-color: #f8f9fa;
+  padding: 20px;
+}

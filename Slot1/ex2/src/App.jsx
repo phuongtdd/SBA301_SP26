@@ -9,13 +9,19 @@ import Contact from './components/Contact'
 function App() {
   return (
     <BrowsersRouter>
-    <Header />
-    <Routes>
-        <Route path="/" element={<div>Trang chủ</div>} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-      </Routes>
-    <Footer />
+      <div className="app-container">
+        <Header />
+        
+        <main className="main-content">
+          <Routes>
+            <Route path="/" element={<div>Trang chủ</div>} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
+        </main>
+
+        <Footer />
+      </div>
     </BrowsersRouter>
   );
 }
