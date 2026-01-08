@@ -6,7 +6,7 @@ import { BrowserRouter as BrowsersRouter, Route, Routes } from 'react-router-dom
 import About from './components/About'
 import Contact from './components/Contact'
 import Orchid from './components/Orchid'
-import {OrchidsData} from './data/orchidsData.js'
+import { OrchidsData } from './data/OrchidsData.js'
 import ListOfOrchids from './components/ListOfOrchids.jsx'
 
 function App() {
