@@ -10,6 +10,7 @@ export const OrchidsData = [
     category: "Dendrobium",
 
     isSpecial: true,
+    price: 1000000,
 
     image: "images/orchid1.jpg",
   },
@@ -25,6 +26,7 @@ export const OrchidsData = [
     category: "Dendrobium",
 
     isSpecial: true,
+    price: 850000,
 
     image: "images/orchid2.jpg",
   },
@@ -40,6 +42,7 @@ export const OrchidsData = [
     category: "Dendrobium",
 
     isSpecial: true,
+    price: 120000,
 
     image: "images/orchid3.jpg",
   },
@@ -54,6 +57,7 @@ export const OrchidsData = [
 
     category: "Dendrobium",
     isSpecial: false,
+    price: 900000,
 
     image: "images/orchid4.jpg",
   },
@@ -69,6 +73,7 @@ export const OrchidsData = [
     category: "Dendrobium",
 
     isSpecial: true,
+    price: 750000,
 
     image: "images/orchid5.jpg",
   },
@@ -81,6 +86,7 @@ export const OrchidsData = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla porta lobortis ex. Morbi cursus consectetur diam, non lobortis massa gravida eu. Duis molestie purus vel ligula suscipit, sit amet iaculis justo tempus. Cras pellentesque urna in feugiat fringilla. Vivamus dictum lacinia nulla, id rhoncus lectus fermentum et. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla porta lobortis ex. Morbi cursus consectetur diam, non lobortis massa gravida eu. Duis molestie purus vel ligula suscipit, sit amet iaculis justo tempus. Cras pellentesque urna in feugiat fringilla. Vivamus dictum lacinia nulla, id rhoncus lectus fermentum et. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla porta lobortis ex. or sit amet, consectetur adipiscing elit.",
     isSpecial: true,
+    price: 650000,
 
     image: "images/orchid6.jpg",
 
@@ -98,6 +104,7 @@ export const OrchidsData = [
     category: "Dendrobium",
 
     isSpecial: true,
+    price: 100000,
 
     image: "images/orchid7.jpg",
   },
@@ -113,6 +120,7 @@ export const OrchidsData = [
     category: "Dendrobium",
 
     isSpecial: true,
+    price: 200000,
 
     image: "images/orchid8.jpg",
   },
