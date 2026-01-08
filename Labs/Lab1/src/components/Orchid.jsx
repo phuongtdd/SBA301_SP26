@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Card, Button } from 'react-bootstrap';
-import { Link, useParams } from 'react-router-dom';
-import { OrchidsData } from '../data/OrchidsData.js';
+import { Link } from 'react-router-dom';
 
 class Orchid extends Component {
   renderCard() {
@@ -64,21 +63,17 @@ class Orchid extends Component {
   }
 
   render() {
-    const { orchid, params } = this.props;
+    const { orchid } = this.props;
     if (orchid) return this.renderCard();
 
-    const id = params?.id;
-    const selected = OrchidsData.find((o) => o.id === id);
-    return this.renderDetail(selected);
+    // No orchid prop passed — show not found message
+    return (
+      <div style={{ padding: '2rem' }}>
+        <h3>Không tìm thấy hoa lan</h3>
+        <Button as={Link} to="/orchid" variant="primary">Quay lại</Button>
+      </div>
+    );
   }
 }
 
-// HOC to inject params into class component
-function withParams(Component) {
-  return function Wrapped(props) {
-    const params = useParams();
-    return <Component {...props} params={params} />;
-  };
-}
-
-export default withParams(Orchid);
+export default Orchid;
