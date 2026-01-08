@@ -73,7 +73,6 @@ class Orchid extends Component {
   }
 }
 
-// HOC to inject params into class component
 function withParams(Component) {
   return function Wrapped(props) {
     const params = useParams();
