@@ -1,84 +1,43 @@
-import React from "react";
-import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Container from "react-bootstrap/Container";
-import Badge from "react-bootstrap/Badge";
-import Modal from "react-bootstrap/Modal";
-import { useState } from "react";
-import ConfirmModal from "./ConfirmModal";
+import { Card, Button } from 'react-bootstrap';
+import { useParams, Link } from 'react-router-dom';
+import { OrchidsData as orchidList } from '../data/OrchidsData.js';
 
-export default function Orchid({ orchidsData }) {
-  const [show, setShow] = useState(false);
-  const [selectedOrchid, setSelectedOrchid] = useState(null);
-  const handleClose = () => setShow(false);
-  const handleShow = (orchid) => {
-    setSelectedOrchid(orchid);
-    setShow(true);
-  };
+function Orchid() {
+    const { id } = useParams();
+    const orchid = orchidList.find((o) => o.id === id);
 
-  return (
-    <Container fluid>
-      <Row className="g-4">
-        {orchidsData.map((orchid) => (
-          <Col md={3} className="d-flex" key={orchid.id}>
-            <Card className="orchid-card">
-              <Card.Img
-                variant="top"
-                src={orchid.image}
-                className="orchid-img"
-              />
-              <Card.Body className="d-flex flex-column">
-                <Card.Title>{orchid.orchidName}</Card.Title>
-                <p>Id: {orchid.id}</p>
-                <Card.Text>Category: {orchid.category}</Card.Text>
-                {orchid.isSpecial && (
-                  <Badge
-                    bg="danger"
-                    className="position-absolute top-0 end-0 m-2"
-                    style={{ zIndex: 2 }}
-                  >
-                    Special
-                  </Badge>
-                )}
-                <p>Price: {orchid.price}</p>
-                <div className="d-flex justify-content-center mt-auto gap-2">
-                  <Button
-                    variant="primary"
-                    size="sm"
-                    onClick={() => handleShow(orchid)}
-                  >
-                    Detail
-                  </Button>
-                  <Button variant="primary" size="sm">
-                    Buy Now
-                  </Button>
-                </div>
-              </Card.Body>
+    if (!orchid) {
+        return (
+            <div style={{ padding: '2rem' }}>
+                <h3>Không tìm thấy hoa lan</h3>
+                <Button as={Link} to="/orchid" variant="primary">Quay lại</Button>
+            </div>
+        );
+    }
+
+    return (
+        <div className="orchid-page" style={{ padding: '2rem' }}>
+            <Card className="orchid-card" style={{ maxWidth: 900, margin: '0 auto' }}>
+                <Card.Img 
+                            variant="top" 
+                            src={orchid.image} 
+                            alt={orchid.orchidName}
+                        />
+                <Card.Body>
+                    <Card.Title>{orchid.orchidName}</Card.Title>
+                    <Card.Text>{orchid.description}</Card.Text>
+                    <div className="orchid-info">
+                        <p><strong>Danh mục:</strong> {orchid.category}</p>
+                        <p><strong>Giá:</strong> {orchid.price}</p>
+                    </div>
+                    {orchid.isSpecial && <span className="special-badge">Đặc biệt</span>}
+                    <div style={{ marginTop: '1rem' }}>
+                        <Button as={Link} to="/orchid" variant="outline-primary">Quay lại bộ sưu tập</Button>
+                    </div>
+                </Card.Body>
             </Card>
-          </Col>
-        ))}
-      </Row>
-      <ConfirmModal
-        show={show}
-        handleClose={handleClose}
-        title={selectedOrchid?.orchidName}
-        body={
-          <div>
-            <img
-              src={selectedOrchid?.image}
-              alt={selectedOrchid?.orchidName}
-              className="img-fluid mb-3"
-            />
-            <p>ID: {selectedOrchid?.id}</p>
-            <p>Category: {selectedOrchid?.category}</p>
-            <p>Price: {selectedOrchid?.price}</p>
-            <p>Description: {selectedOrchid?.description}</p>
-          </div>
-        }
-        onConfirm={handleClose}
-      />
-    </Container>
-  );
+        </div>
+    );
 }
+
+export default Orchid;

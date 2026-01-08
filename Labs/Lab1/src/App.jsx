@@ -7,6 +7,7 @@ import About from './components/About'
 import Contact from './components/Contact'
 import Orchid from './components/Orchid'
 import {OrchidsData} from './data/orchidsData.js'
+import ListOfOrchids from './components/ListOfOrchids.jsx'
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>
-        <Orchid orchidsData={OrchidsData} />
+        <ListOfOrchids orchidsData={OrchidsData} />
 
         <Footer avatar="/images/work.jpg" name="phuongtdd" email="phuongtddde180212@fpt.edu.vn" />
       </div>
