@@ -66,14 +66,18 @@ class Orchid extends Component {
     const { orchid } = this.props;
     if (orchid) return this.renderCard();
 
-    // No orchid prop passed — show not found message
-    return (
-      <div style={{ padding: '2rem' }}>
-        <h3>Không tìm thấy hoa lan</h3>
-        <Button as={Link} to="/orchid" variant="primary">Quay lại</Button>
-      </div>
-    );
+    const id = params?.id;
+    const selected = OrchidsData.find((o) => o.id === id);
+    return this.renderDetail(selected);
   }
+}
+
+// HOC to inject params into class component
+function withParams(Component) {
+  return function Wrapped(props) {
+    const params = useParams();
+    return <Component {...props} params={params} />;
+  };
 }
 
 export default Orchid;
