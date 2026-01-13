@@ -9,17 +9,16 @@ import ConfirmModal from "./ConfirmModal";
 import Orchid from "./Orchid";
 import FilterSort from "./FilterSort";
 import SearchBar from "./SearchBar";
-
+import { useNavigate } from "react-router-dom";
 export default function ListOfOrchids({ orchidsData }) {
-  const [show, setShow] = useState(false);
-  const [selectedOrchid, setSelectedOrchid] = useState(null);
   const [filter, setFilter] = useState("");
   const [sort, setSort] = useState("price-asc");
   const [search, setSearch] = useState("");
-  const handleClose = () => setShow(false);
+
+  const navigate = useNavigate();
+
   const handleShow = (orchid) => {
-    setSelectedOrchid(orchid);
-    setShow(true);
+    navigate(`/detail/${orchid.id}`);
   };
 
   const categories = useMemo(
@@ -84,25 +83,6 @@ export default function ListOfOrchids({ orchidsData }) {
           </Col>
         ))}
       </Row>
-      <ConfirmModal
-        show={show}
-        handleClose={handleClose}
-        title={selectedOrchid?.orchidName}
-        body={
-          <div>
-            <img
-              src={selectedOrchid?.image}
-              alt={selectedOrchid?.orchidName}
-              className="img-fluid mb-3"D
-            />
-            <p>ID: {selectedOrchid?.id}</p>
-            <p>Category: {selectedOrchid?.category}</p>
-            <p>Price: {selectedOrchid?.price}</p>
-            <p>Description: {selectedOrchid?.description}</p>
-          </div>
-        }
-        onConfirm={handleClose}
-      />
     </Container>
   );
 }
