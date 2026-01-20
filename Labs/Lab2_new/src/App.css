@@ -1,0 +1,84 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; 
+}
+
+.main-content {
+  flex: 1; 
+}
+
+footer {
+  /* Tùy chỉnh footer của bạn */
+  background-color: #f8f9fa;
+  padding: 20px;
+}
+
+header {
+  text-align: center;
+}
+
+/* Card chiếm toàn bộ chiều cao của cột */
+.orchid-card {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Global fix to avoid horizontal overflow */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Ảnh có cùng chiều cao, cắt vừa khung và responsive */
+.orchid-img {
+  width: 100%;
+  height: 200px;         /* tùy bạn chỉnh 180 / 220 / ... */
+  object-fit: cover;     /* không méo ảnh, cắt cho vừa khung */
+  display: block;
+}
+
+/* (tuỳ chọn) căn lề cho text nếu muốn đều hơn */
+.orchid-card .card-text {
+  font-size: 0.9rem;
+}
+
+.btn-primary {
+  border-radius: 1.5rem;
+  font-size: 0.8rem
+}
+
+
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f8fafc 0%, #e9f0ff 100%);
+  padding: 1.5rem;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 520px;
+  background: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 8px 28px rgba(13, 38, 76, 0.08);
+}
+
+.title {
+  text-align: center;
+}
+
+/* responsive */
+@media (max-width: 576px) {
+  .login-card { padding: 1rem; margin: 0.5rem; }
+}
