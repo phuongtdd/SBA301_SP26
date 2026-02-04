@@ -1,0 +1,30 @@
+.confirm-content {
+  text-align: center;
+  padding: var(--space-4) 0;
+}
+
+.confirm-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto var(--space-4);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.confirm-icon.danger {
+  background: rgba(239, 68, 68, 0.15);
+  color: var(--error-500);
+}
+
+.confirm-icon.warning {
+  background: rgba(234, 179, 8, 0.15);
+  color: var(--warning-500);
+}
+
+.confirm-message {
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}

@@ -1,0 +1,365 @@
+@startuml
+class sba301.a2trandinhduyphuong_se18d04.dtos.response.NewsArticleResponse {
+- Long newsArticleId
+- String newsTitle
+- String headline
+- LocalDateTime createdDate
+- String newsContent
+- String newsSource
+- Long categoryId
+- String categoryName
+- Boolean isActive
+- Long createdById
+- String createdByName
+- LocalDateTime modifiedDate
+- List<TagResponse> tags
+}
+
+interface sba301.a2trandinhduyphuong_se18d04.services.CategoryService {
+~ List<CategoryResponse> getAllCategories()
+~ CategoryResponse getCategoryById(Long)
+~ CategoryResponse createCategory(CategoryRequest)
+~ CategoryResponse updateCategory(Long,CategoryRequest)
+~ void deleteCategory(Long)
+~ List<CategoryResponse> searchCategories(String)
+}
+
+class sba301.a2trandinhduyphuong_se18d04.entities.Tag {
+- Long tagId
+- String tagName
+- String note
+- List<NewsArticle> newsArticles
+}
+
+class sba301.a2trandinhduyphuong_se18d04.exceptions.GlobalExceptionHandler {
++ ResponseEntity<ApiResponse<Void>> handleRuntimeException(RuntimeException)
++ ResponseEntity<ApiResponse<Map<String,String>>> handleValidationExceptions(MethodArgumentNotValidException)
++ ResponseEntity<ApiResponse<Void>> handleException(Exception)
+}
+
+class sba301.a2trandinhduyphuong_se18d04.controllers.NewsArticleController {
+- NewsArticleService newsArticleService
++ ResponseEntity<ApiResponse<List<NewsArticleResponse>>> getAllNewsArticles()
++ ResponseEntity<ApiResponse<List<NewsArticleResponse>>> getActiveNewsArticles()
++ ResponseEntity<ApiResponse<NewsArticleResponse>> getNewsArticleById(Long)
++ ResponseEntity<ApiResponse<NewsArticleResponse>> createNewsArticle(NewsArticleRequest,Long)
++ ResponseEntity<ApiResponse<NewsArticleResponse>> updateNewsArticle(Long,NewsArticleRequest,Long)
++ ResponseEntity<ApiResponse<Void>> deleteNewsArticle(Long)
++ ResponseEntity<ApiResponse<List<NewsArticleResponse>>> searchNewsArticles(String)
++ ResponseEntity<ApiResponse<List<NewsArticleResponse>>> getNewsArticlesByCreator(Long)
+}
+
+
+class sba301.a2trandinhduyphuong_se18d04.services.impl.NewsArticleServiceImpl {
+- NewsArticleRepository newsArticleRepository
+- CategoryRepository categoryRepository
+- AccountRepository accountRepository
+- TagRepository tagRepository
++ List<NewsArticleResponse> getAllNewsArticles()
++ List<NewsArticleResponse> getActiveNewsArticles()
++ NewsArticleResponse getNewsArticleById(Long)
++ NewsArticleResponse createNewsArticle(NewsArticleRequest,Long)
++ NewsArticleResponse updateNewsArticle(Long,NewsArticleRequest,Long)
++ void deleteNewsArticle(Long)
++ List<NewsArticleResponse> searchNewsArticles(String)
++ List<NewsArticleResponse> getNewsArticlesByCreator(Long)
+- NewsArticleResponse mapToResponse(NewsArticle)
+}
+
+
+class sba301.a2trandinhduyphuong_se18d04.A2TranDinhDuyPhuongSe18D04Application {
++ {static} void main(String[])
+}
+
+interface sba301.a2trandinhduyphuong_se18d04.services.AuthService {
+~ LoginResponse login(LoginRequest)
+}
+
+class sba301.a2trandinhduyphuong_se18d04.dtos.response.LoginResponse {
+- String token
+- Long accountId
+- String accountName
+- String accountEmail
+- Integer accountRole
+}
+
+class sba301.a2trandinhduyphuong_se18d04.dtos.response.ApiResponse {
+- boolean success
+- String message
+- T data
++ {static} ApiResponse<T> success(T)
++ {static} ApiResponse<T> success(String,T)
++ {static} ApiResponse<T> error(String)
+}
+
+
+class sba301.a2trandinhduyphuong_se18d04.entities.Category {
+- Long categoryId
+- String categoryName
+- String categoryDescription
+- Long parentCategoryId
+- CategoryStatus isActive
+- List<NewsArticle> newsArticles
+}
+
+interface sba301.a2trandinhduyphuong_se18d04.services.TagService {
+~ List<TagResponse> getAllTags()
+~ TagResponse getTagById(Long)
+~ TagResponse createTag(TagRequest)
+~ TagResponse updateTag(Long,TagRequest)
+~ void deleteTag(Long)
+~ List<TagResponse> searchTags(String)
+}
+
+interface sba301.a2trandinhduyphuong_se18d04.services.NewsArticleService {
+~ List<NewsArticleResponse> getAllNewsArticles()
+~ List<NewsArticleResponse> getActiveNewsArticles()
+~ NewsArticleResponse getNewsArticleById(Long)
+~ NewsArticleResponse createNewsArticle(NewsArticleRequest,Long)
+~ NewsArticleResponse updateNewsArticle(Long,NewsArticleRequest,Long)
+~ void deleteNewsArticle(Long)
+~ List<NewsArticleResponse> searchNewsArticles(String)
+~ List<NewsArticleResponse> getNewsArticlesByCreator(Long)
+}
+
+class sba301.a2trandinhduyphuong_se18d04.dtos.response.CategoryResponse {
+- Long categoryId
+- String categoryName
+- String categoryDescription
+- Long parentCategoryId
+- Boolean isActive
+}
+
+class sba301.a2trandinhduyphuong_se18d04.dtos.response.TagResponse {
+- Long tagId
+- String tagName
+- String note
+}
+
+interface sba301.a2trandinhduyphuong_se18d04.services.AccountService {
+~ List<AccountResponse> getAllAccounts()
+~ AccountResponse getAccountById(Long)
+~ AccountResponse createAccount(AccountRequest)
+~ AccountResponse updateAccount(Long,AccountRequest)
+~ void deleteAccount(Long)
+~ List<AccountResponse> searchAccounts(String)
+}
+
+class sba301.a2trandinhduyphuong_se18d04.controllers.CategoryController {
+- CategoryService categoryService
++ ResponseEntity<ApiResponse<List<CategoryResponse>>> getAllCategories()
++ ResponseEntity<ApiResponse<CategoryResponse>> getCategoryById(Long)
++ ResponseEntity<ApiResponse<CategoryResponse>> createCategory(CategoryRequest)
++ ResponseEntity<ApiResponse<CategoryResponse>> updateCategory(Long,CategoryRequest)
++ ResponseEntity<ApiResponse<Void>> deleteCategory(Long)
++ ResponseEntity<ApiResponse<List<CategoryResponse>>> searchCategories(String)
+}
+
+
+class sba301.a2trandinhduyphuong_se18d04.dtos.response.AccountResponse {
+- Long accountId
+- String accountName
+- String accountEmail
+- Integer accountRole
+- String roleName
+}
+
+interface sba301.a2trandinhduyphuong_se18d04.repositories.TagRepository {
+~ List<Tag> searchByKeyword(String)
+~ boolean existsByTagName(String)
+}
+
+class sba301.a2trandinhduyphuong_se18d04.controllers.AccountController {
+- AccountService accountService
++ ResponseEntity<ApiResponse<List<AccountResponse>>> getAllAccounts()
++ ResponseEntity<ApiResponse<AccountResponse>> getAccountById(Long)
++ ResponseEntity<ApiResponse<AccountResponse>> createAccount(AccountRequest)
++ ResponseEntity<ApiResponse<AccountResponse>> updateAccount(Long,AccountRequest)
++ ResponseEntity<ApiResponse<Void>> deleteAccount(Long)
++ ResponseEntity<ApiResponse<List<AccountResponse>>> searchAccounts(String)
+}
+
+
+interface sba301.a2trandinhduyphuong_se18d04.repositories.NewsArticleRepository {
+~ List<NewsArticle> findByNewsStatus(NewsStatus)
+~ List<NewsArticle> findByCreatedBy_AccountId(Long)
+~ List<NewsArticle> searchByKeyword(String)
+~ boolean existsByCreatedByAccountId(Long)
+~ boolean existsByCategoryId(Long)
+}
+
+class sba301.a2trandinhduyphuong_se18d04.services.impl.TagServiceImpl {
+- TagRepository tagRepository
++ List<TagResponse> getAllTags()
++ TagResponse getTagById(Long)
++ TagResponse createTag(TagRequest)
++ TagResponse updateTag(Long,TagRequest)
++ void deleteTag(Long)
++ List<TagResponse> searchTags(String)
+- TagResponse mapToResponse(Tag)
+}
+
+
+class sba301.a2trandinhduyphuong_se18d04.dtos.request.LoginRequest {
+- String email
+- String password
+}
+
+class sba301.a2trandinhduyphuong_se18d04.services.impl.CategoryServiceImpl {
+- CategoryRepository categoryRepository
+- NewsArticleRepository newsArticleRepository
++ List<CategoryResponse> getAllCategories()
++ CategoryResponse getCategoryById(Long)
++ CategoryResponse createCategory(CategoryRequest)
++ CategoryResponse updateCategory(Long,CategoryRequest)
++ void deleteCategory(Long)
++ List<CategoryResponse> searchCategories(String)
+- CategoryResponse mapToResponse(Category)
+}
+
+
+interface sba301.a2trandinhduyphuong_se18d04.repositories.AccountRepository {
+~ Optional<SystemAccount> findByAccountEmail(String)
+~ boolean existsByAccountEmail(String)
+~ List<SystemAccount> searchByKeyword(String)
+}
+
+class sba301.a2trandinhduyphuong_se18d04.dtos.request.AccountRequest {
+- String accountName
+- String accountEmail
+- Integer accountRole
+- String accountPassword
+}
+
+class sba301.a2trandinhduyphuong_se18d04.controllers.AuthController {
+- AuthService authService
++ ResponseEntity<ApiResponse<LoginResponse>> login(LoginRequest)
+}
+
+
+class sba301.a2trandinhduyphuong_se18d04.controllers.TagController {
+- TagService tagService
++ ResponseEntity<ApiResponse<List<TagResponse>>> getAllTags()
++ ResponseEntity<ApiResponse<TagResponse>> getTagById(Long)
++ ResponseEntity<ApiResponse<TagResponse>> createTag(TagRequest)
++ ResponseEntity<ApiResponse<TagResponse>> updateTag(Long,TagRequest)
++ ResponseEntity<ApiResponse<Void>> deleteTag(Long)
++ ResponseEntity<ApiResponse<List<TagResponse>>> searchTags(String)
+}
+
+
+class sba301.a2trandinhduyphuong_se18d04.entities.NewsArticle {
+- Long newsArticleId
+- String newsTitle
+- String headline
+- LocalDateTime createdDate
+- String newsContent
+- String newsSource
+- Category category
+- NewsStatus newsStatus
+- SystemAccount createdBy
+- SystemAccount updatedBy
+- LocalDateTime modifiedDate
+- List<Tag> tags
+}
+
+class sba301.a2trandinhduyphuong_se18d04.configs.SecurityConfig {
++ SecurityFilterChain securityFilterChain(HttpSecurity)
++ CorsConfigurationSource corsConfigurationSource()
+}
+
+enum sba301.a2trandinhduyphuong_se18d04.entities.enumerations.CategoryStatus {
++  ACTIVE
++  INACTIVE
+~ int value
++ int getValue()
+}
+
+
+enum sba301.a2trandinhduyphuong_se18d04.entities.enumerations.NewsStatus {
++  ACTIVE
++  INACTIVE
+~ int value
++ int getValue()
+}
+
+
+class sba301.a2trandinhduyphuong_se18d04.configs.OpenApiConfigs {
+}
+class sba301.a2trandinhduyphuong_se18d04.services.impl.AuthServiceImpl {
+- AccountRepository accountRepository
+- String jwtSecret
++ LoginResponse login(LoginRequest)
+- String generateToken(SystemAccount)
+}
+
+
+interface sba301.a2trandinhduyphuong_se18d04.repositories.CategoryRepository {
+~ List<Category> searchByKeyword(String)
+~ boolean existsByCategoryName(String)
+}
+
+class sba301.a2trandinhduyphuong_se18d04.dtos.request.CategoryRequest {
+- String categoryName
+- String categoryDescription
+- Long parentCategoryId
+- Boolean isActive
+}
+
+class sba301.a2trandinhduyphuong_se18d04.configs.JpaAuditingConfigs {
++ AuditorAware<String> auditorAware()
+}
+
+class sba301.a2trandinhduyphuong_se18d04.services.impl.AccountServiceImpl {
+- AccountRepository accountRepository
+- NewsArticleRepository newsArticleRepository
++ List<AccountResponse> getAllAccounts()
++ AccountResponse getAccountById(Long)
++ AccountResponse createAccount(AccountRequest)
++ AccountResponse updateAccount(Long,AccountRequest)
++ void deleteAccount(Long)
++ List<AccountResponse> searchAccounts(String)
+- AccountResponse mapToResponse(SystemAccount)
+}
+
+
+class sba301.a2trandinhduyphuong_se18d04.dtos.request.NewsArticleRequest {
+- String newsTitle
+- String headline
+- String newsContent
+- String newsSource
+- Long categoryId
+- Boolean isActive
+- List<Long> tagIds
+}
+
+class sba301.a2trandinhduyphuong_se18d04.dtos.request.TagRequest {
+- String tagName
+- String note
+}
+
+class sba301.a2trandinhduyphuong_se18d04.configs.DataInitConfig {
++ CommandLineRunner initData(AccountRepository,CategoryRepository,TagRepository)
+}
+
+class sba301.a2trandinhduyphuong_se18d04.entities.SystemAccount {
+- Long accountId
+- String accountName
+- String accountEmail
+- Integer accountRole
+- String accountPassword
+- List<NewsArticle> createdNewsArticles
+}
+
+
+
+sba301.a2trandinhduyphuong_se18d04.services.NewsArticleService <|.. sba301.a2trandinhduyphuong_se18d04.services.impl.NewsArticleServiceImpl
+org.springframework.data.jpa.repository.JpaRepository <|-- sba301.a2trandinhduyphuong_se18d04.repositories.TagRepository
+org.springframework.data.jpa.repository.JpaRepository <|-- sba301.a2trandinhduyphuong_se18d04.repositories.NewsArticleRepository
+sba301.a2trandinhduyphuong_se18d04.services.TagService <|.. sba301.a2trandinhduyphuong_se18d04.services.impl.TagServiceImpl
+sba301.a2trandinhduyphuong_se18d04.services.CategoryService <|.. sba301.a2trandinhduyphuong_se18d04.services.impl.CategoryServiceImpl
+org.springframework.data.jpa.repository.JpaRepository <|-- sba301.a2trandinhduyphuong_se18d04.repositories.AccountRepository
+sba301.a2trandinhduyphuong_se18d04.services.AuthService <|.. sba301.a2trandinhduyphuong_se18d04.services.impl.AuthServiceImpl
+org.springframework.data.jpa.repository.JpaRepository <|-- sba301.a2trandinhduyphuong_se18d04.repositories.CategoryRepository
+sba301.a2trandinhduyphuong_se18d04.services.AccountService <|.. sba301.a2trandinhduyphuong_se18d04.services.impl.AccountServiceImpl
+@enduml
