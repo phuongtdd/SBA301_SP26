@@ -50,6 +50,7 @@ export const AuthProvider = ({ children }) => {
                 // Let's fix `authService.js` instead? No, AuthContext is the consumer.
                 // If I fix it here, I should also save it to localStorage here to persist the normalized structure.
                 localStorage.setItem('user', JSON.stringify(userData));
+                localStorage.setItem('token', userData.token)
 
                 return { success: true, user: userData };
             }

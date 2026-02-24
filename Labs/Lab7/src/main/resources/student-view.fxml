@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="900.0"
+            xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="sba301.lab7.controller.StudentController">
+
+    <VBox spacing="15.0" AnchorPane.topAnchor="10.0" AnchorPane.leftAnchor="10.0"
+          AnchorPane.rightAnchor="10.0" AnchorPane.bottomAnchor="10.0">
+
+        <!-- Title -->
+        <Label text="Student Management" style="-fx-font-size: 20px; -fx-font-weight: bold;">
+            <padding>
+                <Insets bottom="5.0"/>
+            </padding>
+        </Label>
+
+        <!-- Form nhập liệu -->
+        <GridPane hgap="10.0" vgap="10.0">
+            <padding>
+                <Insets top="5.0" bottom="5.0" left="5.0" right="5.0"/>
+            </padding>
+
+            <!-- Row 0: Email -->
+            <Label text="Email:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+            <TextField fx:id="txtEmail" promptText="Enter email"
+                       GridPane.columnIndex="1" GridPane.rowIndex="0"
+                       prefWidth="300.0"/>
+
+            <!-- Row 1: Password -->
+            <Label text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+            <PasswordField fx:id="txtPassword" promptText="Enter password"
+                           GridPane.columnIndex="1" GridPane.rowIndex="1"
+                           prefWidth="300.0"/>
+
+            <!-- Row 2: First Name -->
+            <Label text="First Name:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+            <TextField fx:id="txtFirstName" promptText="Enter first name"
+                       GridPane.columnIndex="1" GridPane.rowIndex="2"
+                       prefWidth="300.0"/>
+
+            <!-- Row 3: Last Name -->
+            <Label text="Last Name:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+            <TextField fx:id="txtLastName" promptText="Enter last name"
+                       GridPane.columnIndex="1" GridPane.rowIndex="3"
+                       prefWidth="300.0"/>
+
+            <!-- Row 4: Marks -->
+            <Label text="Marks:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+            <TextField fx:id="txtMarks" promptText="Enter marks"
+                       GridPane.columnIndex="1" GridPane.rowIndex="4"
+                       prefWidth="300.0"/>
+        </GridPane>
+
+        <!-- Buttons -->
+        <HBox spacing="10.0" alignment="CENTER_LEFT">
+            <padding>
+                <Insets top="5.0" bottom="5.0"/>
+            </padding>
+            <Button fx:id="btnAdd" text="Add Student" onAction="#handleAddStudent"
+                    prefWidth="120.0"/>
+            <Button fx:id="btnUpdate" text="Update Student" onAction="#handleUpdateStudent"
+                    prefWidth="120.0"/>
+            <Button fx:id="btnDelete" text="Delete Student" onAction="#handleDeleteStudent"
+                    prefWidth="120.0"/>
+        </HBox>
+
+        <!-- TableView hiển thị danh sách sinh viên -->
+        <TableView fx:id="studentTable" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="idColumn" text="ID" prefWidth="60.0"/>
+                <TableColumn fx:id="emailColumn" text="Email" prefWidth="200.0"/>
+                <TableColumn fx:id="firstNameColumn" text="First Name" prefWidth="150.0"/>
+                <TableColumn fx:id="lastNameColumn" text="Last Name" prefWidth="150.0"/>
+                <TableColumn fx:id="marksColumn" text="Marks" prefWidth="100.0"/>
+            </columns>
+        </TableView>
+
+    </VBox>
+</AnchorPane>
