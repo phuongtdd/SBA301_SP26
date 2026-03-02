@@ -1,0 +1,130 @@
+.bookings-page {
+  padding: 4rem 2rem;
+}
+
+.bookings-title {
+  font-size: 3rem;
+  margin-bottom: 3rem;
+}
+
+.bookings-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.booking-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2.5rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  transition: var(--transition);
+}
+
+.booking-card:hover {
+  transform: translateX(10px);
+  border-color: var(--accent);
+}
+
+.booking-main {
+  flex: 1;
+}
+
+.booking-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.booking-id {
+  font-weight: 700;
+  color: var(--primary);
+  font-size: 1.125rem;
+}
+
+.status-badge {
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.status-badge.active { background: #d1fae5; color: var(--success); }
+.status-badge.cancelled { background: #fee2e2; color: var(--error); }
+.status-badge.completed { background: #e0f2fe; color: #0284c7; }
+
+.booking-content-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.content-item {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  color: var(--text-muted);
+}
+
+.item-details label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+
+.item-details span {
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.price-text {
+  color: var(--accent) !important;
+  font-size: 1.25rem;
+}
+
+.booking-details-section h4 {
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+.details-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.room-detail-pill {
+  background: var(--background);
+  border: 1px solid var(--border);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.booking-arrow {
+  color: var(--text-muted);
+  margin-left: 2rem;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 6rem;
+  border-radius: var(--radius-lg);
+  border: 2px dashed var(--border);
+}
+
+.empty-icon {
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+  opacity: 0.5;
+}

@@ -1,0 +1,193 @@
+.staff-page {
+  padding: 4rem 2rem;
+}
+
+.staff-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+.table-container {
+  overflow-x: auto;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+}
+
+.staff-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.staff-table th {
+  padding: 1.5rem 2rem;
+  background: rgba(15, 23, 42, 0.02);
+  font-weight: 700;
+  color: var(--primary);
+  border-bottom: 2px solid var(--border);
+}
+
+.staff-table td {
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-muted);
+}
+
+.font-bold {
+  font-weight: 800;
+  color: var(--primary);
+}
+
+.price-col {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.status-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.status-active {
+  background: var(--success);
+}
+.status-inactive {
+  background: var(--error);
+}
+
+.actions-cell {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.action-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  background: white;
+  color: var(--text-muted);
+}
+
+.action-btn.edit:hover {
+  background: var(--primary);
+  color: white;
+}
+.action-btn.delete:hover {
+  background: var(--error);
+  color: white;
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.modal-content {
+  width: 100%;
+  max-width: 600px;
+  padding: 3rem;
+  border-radius: var(--radius-lg);
+  background: white;
+}
+
+.modal-content h2 {
+  margin-bottom: 2.5rem;
+  color: var(--primary);
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+
+.staff-form textarea {
+  height: 120px;
+  resize: none;
+}
+
+.staff-select {
+  width: 100%;
+  padding: 1.25rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: white;
+  color: var(--primary);
+  font-family: inherit;
+  font-size: 1rem;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.staff-select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.1);
+}
+
+/* Delete Confirm Modal Specifics */
+.delete-confirm-modal {
+    max-width: 400px;
+    text-align: center;
+    padding: 2.5rem;
+}
+
+.delete-icon-wrapper {
+    width: 80px;
+    height: 80px;
+    background: rgba(239, 68, 68, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+}
+
+.text-error {
+    color: var(--error);
+}
+
+.delete-msg {
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.btn-error {
+    background: var(--error) !important;
+    border-color: var(--error) !important;
+}
+
+.btn-error:hover {
+    background: #dc2626 !important;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
